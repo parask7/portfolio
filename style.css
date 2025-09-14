@@ -1,156 +1,91 @@
-/* Reset & Base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f9f9f9;
+  color:#222;
+  line-height:1.5;
 }
 
 /* Header */
 header {
-    background-color: #1e1e1e;
-    color: #fff;
-    padding: 20px 10%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-header h1 {
-    font-size: 2rem;
-}
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-}
-header nav ul li a:hover {
-    color: #ff6f61;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
+  background:#1e1e1e;
+  color:#fff;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-/* Sections */
-section {
-    padding: 60px 10%;
-    background-color: #fff;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
-}
-section h2 {
-    margin-bottom: 20px;
-    color: #1e1e1e;
-    font-size: 1.8rem;
-    border-bottom: 2px solid #ff6f61;
-    display: inline-block;
-    padding-bottom: 5px;
+header .logo {
+  font-size:1.25rem;
+  font-weight:700;
 }
 
-/* About Section */
-#about figure {
-    float: left;
-    margin-right: 20px;
-}
-#about img {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border: 3px solid #ff6f61;
-}
-#about p {
-    margin-top: 10px;
+/* Desktop nav */
+nav ul {
+  display:flex;
+  gap:18px;
+  list-style:none;
+  align-items:center;
 }
 
-/* Skills Section */
-#skills ul {
-    list-style: disc;
-    padding-left: 20px;
+nav ul li a {
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  padding:6px 8px;
+  border-radius:4px;
+}
+nav ul li a:hover { background: rgba(255,255,255,0.05); }
+
+/* Hamburger button (hidden on desktop) */
+.hamburger {
+  display:none;           /* becomes visible on small screens */
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:26px;
+  cursor:pointer;
+  padding:6px;
 }
 
-/* Projects Section */
-#projects article {
-    margin-bottom: 30px;
-}
-#projects h3 {
-    color: #ff6f61;
-    margin-bottom: 10px;
-}
-#projects a {
-    color: #1e1e1e;
-    text-decoration: none;
-}
-#projects a:hover {
-    color: #ff6f61;
-}
+/* Page sections spacing */
+section { padding:56px 20px; max-width:1000px; margin:0 auto; }
+section h2 { margin-bottom:12px; color:#111; }
 
-/* Experience Section */
-#experience article {
-    margin-bottom: 30px;
-}
-#experience h3 {
-    color: #ff6f61;
-    margin-bottom: 5px;
-}
-
-/* Achievements Section */
-#achievements ul {
-    list-style: disc;
-    padding-left: 20px;
-}
-
-/* Testimonials Section */
-#testimonials blockquote {
-    font-style: italic;
-    border-left: 4px solid #ff6f61;
-    padding-left: 10px;
-    margin: 10px 0;
-}
-
-/* Contact Section */
-#contact ul {
-    list-style: none;
-    padding-left: 0;
-}
-#contact ul li {
-    margin-bottom: 10px;
-}
-#contact a {
-    color: #1e1e1e;
-    text-decoration: none;
-}
-#contact a:hover {
-    color: #ff6f61;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px 10%;
-    background-color: #1e1e1e;
-    color: #fff;
-    margin-top: 20px;
-    font-size: 0.9rem;
-}
-
-/* Responsive */
+/* Mobile rules */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    #about figure {
-        float: none;
-        margin: 0 auto 20px;
-        display: block;
-    }
+  /* Hide desktop nav */
+  nav ul { 
+    display:none; 
+    position:absolute;
+    top:58px;
+    right:12px;
+    flex-direction:column;
+    gap:0;
+    background:#2b2b2b;
+    padding:10px;
+    border-radius:8px;
+    min-width:200px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  }
+
+  /* When menu active, show */
+  nav ul.active { display:flex; }
+
+  nav ul li a {
+    display:block;
+    padding:10px 12px;
+    color:#fff;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+  }
+  nav ul li:last-child a { border-bottom:0; }
+
+  /* Show hamburger on mobile */
+  .hamburger { display:block; }
 }
