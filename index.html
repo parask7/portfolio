@@ -13,9 +13,10 @@
 <body>
     <!-- Header -->
     <header>
-        <h1>Paras Kukreja</h1>
+        <h1 class="logo">Paras Kukreja</h1>
+        <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰</div>
         <nav>
-            <ul>
+            <ul id="menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -73,19 +74,19 @@
         <article>
             <h3>Snake Game</h3>
             <p>Implemented in Python. Features food interaction, collision detection, and scorekeeping.</p>
-            <a href="https://github.com/parask7/Internship-Project/blob/main/interpe%20project/snakeGame.py" target="_blank">View on GitHub</a>
+            <a href="https://github.com/parask7/Internship-Project/blob/main/interpe%20project/snakeGame.py" target="_blank" rel="noopener noreferrer">View on GitHub</a>
         </article>
 
         <article>
             <h3>Tic Tac Toe Game</h3>
             <p>Implemented in Python. Features two-player interaction, winning/tie detection, and replay option.</p>
-            <a href="https://github.com/parask7/Internship-Project/blob/main/interpe%20project/tic%20tac%20toe.py" target="_blank">View on GitHub</a>
+            <a href="https://github.com/parask7/Internship-Project/blob/main/interpe%20project/tic%20tac%20toe.py" target="_blank" rel="noopener noreferrer">View on GitHub</a>
         </article>
 
         <article>
             <h3>Connect 4 Game</h3>
             <p>Implemented in Python. Features 6x7 grid, player turns, winning condition, and replay option.</p>
-            <a href="https://github.com/parask7/Internship-Project/blob/main/interpe%20project/connect4.py" target="_blank">View on GitHub</a>
+            <a href="https://github.com/parask7/Internship-Project/blob/main/interpe%20project/connect4.py" target="_blank" rel="noopener noreferrer">View on GitHub</a>
         </article>
     </section>
 
@@ -120,10 +121,9 @@
         <ul>
             <li>Email: <a href="mailto:parasrobotics@gmail.com">parasrobotics@gmail.com</a></li>
             <li>Phone: +91-9238771496</li>
-            <li>LinkedIn: <a href="https://www.linkedin.com/in/paraskukreja7/" target="_blank">Paras Kukreja</a></li>
-            <li>GitHub: <a href="https://github.com/parask7" target="_blank">parask7</a></li>
-             <li><a href="./Resume.pdf" download>Download My Resume</a></li>
-
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/paraskukreja7/" target="_blank" rel="noopener noreferrer">Paras Kukreja</a></li>
+            <li>GitHub: <a href="https://github.com/parask7" target="_blank" rel="noopener noreferrer">parask7</a></li>
+            <li><a href="Resume.pdf" download>Download My Resume</a></li>
         </ul>
     </section>
 
@@ -131,6 +131,12 @@
     <footer>
         <p>&copy; 2025 Paras Kukreja. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("active");
+        }
+    </script>
 </body>
 
 </html>
