@@ -132,11 +132,26 @@
         <p>&copy; 2025 Paras Kukreja. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            document.getElementById("menu").classList.toggle("active");
-        }
-    </script>
+ <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburger = document.querySelector('.hamburger');
+  const menu = document.getElementById('menu');
+
+  // sanity checks
+  if (!hamburger) return console.error('Hamburger element (.hamburger) not found.');
+  if (!menu) return console.error('Menu element (#menu) not found.');
+
+  // accessibility initial state
+  hamburger.setAttribute('aria-expanded', 'false');
+
+  hamburger.addEventListener('click', function () {
+    const isActive = menu.classList.toggle('active');
+    // update aria state for screen readers
+    hamburger.setAttribute('aria-expanded', String(isActive));
+  });
+});
+</script>
+
 </body>
 
 </html>
