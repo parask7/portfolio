@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paras Kukreja | Game Developer</title>
+
+  <!-- BOOTSTRAP 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    :root {
+      --red: #e63946;
+      --dark: #0d0d0d;
+      --card: #151515;
+      --text-light: #cfcfcf;
+    }
+
+    /* NAVBAR */
+    nav {
+      padding: 18px 60px;
+      background: #000;
+      border-bottom: 1px solid #111;
+    }
+
+    .nav-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--red);
+      letter-spacing: 1px;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      color: var(--text-light);
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      padding: 80px 60px;
+      min-height: 85vh;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.8rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .hero-text h1 span {
+      color: var(--red);
+    }
+
+    .hero-text p {
+      color: var(--text-light);
+      font-size: 1.2rem;
+      margin: 15px 0;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .btn-main {
+      background: var(--red);
+      padding: 12px 25px;
+      display: inline-block;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: 0.25s;
+      color: white;
+    }
+
+    .btn-main:hover {
+      background: #ff4d57;
+      transform: translateY(-2px);
+    }
+
+    .hero img {
+      width: 80%;
+      max-width: 350px;
+      border-radius: 15px;
+      border: 5px solid #1a1a1a;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.15);
+      object-fit: cover;
+    }
+
+    /* SECTION SPACING */
+    .container-custom {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--red);
+      margin-bottom: 25px;
+    }
+
+    /* ABOUT */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    #about img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 50%;
+      border: 5px solid #1a1a1a;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.15);
+      object-fit: cover;
+    }
+
+    #about p {
+      color: var(--text-light);
+      line-height: 1.75;
+    }
+
+    /* SKILLS */
+    .skill-card {
+      background: var(--card);
+      padding: 18px;
+      text-align: center;
+      border-radius: 10px;
+      border: 1px solid #222;
+      font-weight: bold;
+      color: var(--red);
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      background: #1a1a1a;
+      transform: translateY(-4px);
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.25);
+    }
+
+    /* PROJECTS */
+    .projects-container .project-row {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin: 40px 0;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #222;
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+      background: var(--card);
+    }
+
+    /* Alternate rows: reverse flex for even-numbered project-row */
+    .projects-container .project-row:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+
+    /* PROJECT VIDEO */
+    .project-video {
+      flex: 1;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid #222;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.2);
+      transition: transform 0.3s, filter 0.3s;
+    }
+
+    .project-video iframe {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.3s, filter 0.3s;
+      filter: grayscale(60%) brightness(0.85);
+    }
+
+    .projects-container .project-row:hover .project-video iframe {
+      transform: scale(1.05);
+      filter: grayscale(0%) brightness(1);
+    }
+
+    /* PROJECT TEXT */
+    .project-text {
+      flex: 1;
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-text h3 {
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .project-text a {
+      display: inline-block;
+      margin-top: 10px;
+      color: white;
+      background: var(--red);
+      padding: 8px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .project-text a:hover {
+      background: #ff4d57;
+      transform: translateY(-2px);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .projects-container .project-row {
+        flex-direction: column !important;
+        text-align: center;
+      }
+
+      .projects-container .project-row:nth-of-type(even) {
+        flex-direction: column !important;
+      }
+
+      .project-video {
+        height: 200px;
+      }
+    }
+
+    /* EDUCATION TIMELINE FIXED */
+    .timeline {
+      position: relative;
+      padding-left: 50px;
+      margin-top: 40px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--red);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding-left: 20px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      background: var(--red);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    }
+
+    .timeline-item h3 {
+      color: var(--red);
+      margin-bottom: 5px;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* CONTACT */
+    #contact a {
+      margin: 0 12px;
+      color: var(--red);
+      font-weight: bold;
+    }
+
+    #contact a:hover {
+      color: #ff5a63;
+    }
+
+    /* CONTACT FORM */
+    #contact form {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #222;
+      box-shadow: 0 0 18px rgba(255, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    #contact form:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.35);
+    }
+
+    #contact form .form-control {
+      background: #1a1a1a;
+      color: #fff;
+      border: 1px solid #333;
+      border-radius: 6px;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    #contact form .form-control:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 8px rgba(230, 57, 70, 0.5);
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    #contact form label {
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 25px;
+      background: #000;
+      margin-top: 40px;
+      border-top: 1px solid #111;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      #about {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand nav-name">Paras Kukreja</a>
+
+      <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <div class="navbar-nav nav-links gap-4">
+          <a class="nav-link" href="#hero">Home</a>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#skills">Skills</a>
+          <a class="nav-link" href="#projects">Projects</a>
+          <a class="nav-link" href="#education">Education</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-text">
+      <h1>Hello, My Name is <br><span>Paras Kukreja</span></h1>
+      <p>A passionate Unity Game Developer and Programmer focused on creating polished 2D games, smooth gameplay
+        systems, and WebGL browser experiences.</p>
+      <a class="btn-main" href="#" target="_blank">Download Resume</a>
+    </div>
+
+    <img src="HeroSectionImage.png" alt="Paras Kukreja">
+  </section>
+
+  <div class="container-custom">
+
+    <!-- ABOUT -->
+    <section id="about">
+      <img src="aboutSectionImage.png" class="img-fluid rounded" alt="Paras">
+
+      <div>
+        <h2 class="section-title">About Me</h2>
+        <p>
+          I’m a passionate Unity game programmer specializing in 2D gameplay systems, grid-based mechanics, and
+          responsive, smooth controls. I focus on writing clean, optimized C# code to build engaging and efficient
+          gameplay loops, interactive UI systems, and cross-platform experiences for PC, mobile, and WebGL. Continuously
+          improving my skills, I explore performance optimization, AI-driven behavior, and dynamic systems to create
+          technically robust games that are fun, accessible, and enjoyable for players of all skill levels.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="mt-5">
+      <h2 class="section-title">Skills</h2>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="skill-card">Unity 2D</div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card">C# Programming</div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card">WebGL Games</div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card">UI Canvas Systems</div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card">Mobile Input</div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card">Game Systems</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="mt-5">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="projects-container">
+
+        <!-- Project 1 -->
+        <div class="project-card project-row">
+          <div class="project-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ht4DnC66kzA?si=C-PMggMlbzWPKKDo"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="project-text">
+            <h3>Magic Snake 2D</h3>
+            <p>A polished and modern snake game featuring grid-based movement, animations, mobile controls, and WebGL
+              support.</p>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card project-row">
+          <div class="project-text">
+            <h3>Upcoming Projects</h3>
+            <p>More games are in development, including 2D platformers, AI enemy systems, and arcade-style titles.</p>
+          </div>
+          <div class="project-video">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID2?autoplay=0&mute=1&loop=1&playlist=YOUR_VIDEO_ID2"
+              title="Upcoming Projects Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+              onmouseenter="this.src+='&autoplay=1'"
+              onmouseleave="this.src='https://www.youtube.com/embed/YOUR_VIDEO_ID2?autoplay=0&mute=1&loop=1&playlist=YOUR_VIDEO_ID2'"></iframe>
+          </div>
+        </div>
+
+        <!-- Add more projects here following the same pattern -->
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="mt-5">
+      <h2 class="section-title">Education</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h3>2023 – Present</h3>
+          <p><strong>Bachelor of Computer Applications (BCA)</strong></p>
+          <p>Building strong fundamentals in programming, game development, and software engineering.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>2021 – 2023</h3>
+          <p><strong>Higher Secondary Education</strong></p>
+          <p>Specialized in Computer Science and Mathematics.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="text-center mt-5">
+      <h2 class="section-title">Connect With Me</h2>
+      <p>
+        <a href="https://paras-kukreja.itch.io/" target="_blank">Itch.io</a> |
+        <a href="https://github.com/parask7" target="_blank">GitHub</a> |
+        <a href="mailto:paraskukrejagames@gmail.com">Email</a> |
+        <a href="https://www.linkedin.com/in/paraskukreja7/" target="_blank">LinkedIn</a>
+      </p>
+
+      <!-- Contact Form -->
+      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="mt-4 text-start mx-auto"
+        style="max-width:500px;">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="_replyto" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn-main">Send Message</button>
+      </form>
+    </section>
+
+
+  </div>
+
+  <footer>
+    © 2026 Paras Kukreja | All Rights Reserved
+  </footer>
+
+  <!-- BOOTSTRAP JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
